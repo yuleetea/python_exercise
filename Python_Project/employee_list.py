@@ -1,6 +1,8 @@
 from unicodedata import name
 import uuid
 import pprint
+from Python_Project.exceptions import not_a_department_exception
+import exceptions
 
 class Employee:
 
@@ -32,32 +34,45 @@ class Employee:
             
             Employee.employee_details.append(employee_obj)
 
-        except: 
-            pass
+        except not_a_department_exception: 
+            print("Did not enter a department")
         
-    def update_employee(id):
+    def update_employee(index):
 
         # if employee obj id == id then .update values with new user inputs
 
         try:
 
-            id = input("Please enter the ID of the employee you wish to update: \n")
+            option = int(index)
 
-            for employee in Employee.employee_details:
-                if employee.id == id:
+            employee = Employee.employee_details[option]
                     
-                #access the current employee object and set a new user input value for each field
-                    employee.first_name = input("Enter your first name: \n")
-                    employee.last_name = input("Enter your last name: \n")
-                    employee.date_of_employment = input("Enter your last date of employment: \n")
-                    employee.salary = input("Enter your salary: \n")
-                    employee.department = input("Enter your department: \n")
+            #access the current employee object and set a new user input value for each field
+            employee.first_name = input("Enter your first name: \n")
+            employee.last_name = input("Enter your last name: \n")
+            employee.date_of_employment = input("Enter your last date of employment: \n")
+            employee.salary = input("Enter your salary: \n")
+            employee.department = input("Enter your department: \n")
 
-        except: 
-            pass
+        except ValueError: 
+            print("Index must be an integer")
 
-    def remove_employee(id):
-        pass
+    #pop 
+    def remove_employee(index):
+
+        try:
+
+            option = int(index)
+
+            Employee.employee_details.pop(option)
+                    
+
+        except ValueError: 
+            print("Index must be an integer")
+
+        except IndexError:
+            print("Sequence index out of range")
+
 
     def list_employees():
 

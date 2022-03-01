@@ -34,9 +34,9 @@ def main_menu():
             if option == 1:
                 employee_list.Employee.add_employees()
             elif option == 2:
-                employee_list.Employee.update_employee(id)
+                employee_list.Employee.update_employee(input("Please enter the index of the employee you wish to update: \n"))
             elif option == 3: 
-                employee_list.Employee.remove_employee()
+                employee_list.Employee.remove_employee(input("Please enter the index of the employee you wish to remove: \n"))
             elif option == 4:
                 employee_list.Employee.list_employees()
             elif option == 5:
